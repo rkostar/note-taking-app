@@ -1,0 +1,25 @@
+#mynotes{
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    /* background-color: antiquewhite; */
+    column-gap: 0.7%;
+    row-gap: 3%;
+    grid-auto-columns: 3;
+    /* margin: 3% 0 3% 0; */
+}
+@media only screen and (max-width: 900px) {
+    #mynotes{
+        grid-template-columns: repeat(2, auto);
+    }
+}
+@media only screen and (max-width: 800px) {
+    #mynotes{
+        grid-template-columns: repeat(2, auto);
+    }
+}
+@media only screen and (max-width: 600px) {
+    #mynotes{
+        grid-template-columns: repeat(1, auto);
+    }
+}
+
