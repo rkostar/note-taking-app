@@ -67,7 +67,8 @@ search.addEventListener('input',()=>{
     const arr= Array.from(document.getElementsByClassName("notecard"));
     arr.forEach((element)=>{
         let cardText= element.getElementsByTagName("p")[0].innerText;
-        if(cardText.includes(inputVal)){
+        let cardTextLower= cardText.toLowerCase();
+        if(cardTextLower.includes(inputVal)){
             element.style.display="block";
         }
         else
@@ -84,7 +85,8 @@ searchbtn.addEventListener("click", ()=>{
     const arr= Array.from(document.getElementsByClassName("notecard"));
     arr.forEach((element)=>{
         let cardText= element.getElementsByTagName("p")[0].innerText;
-        if(cardText.includes(inputVal)){
+        let cardTextLower= cardText.toLowerCase();
+        if(cardTextLower.includes(inputVal)){
             element.style.display="block";
         }
         else
