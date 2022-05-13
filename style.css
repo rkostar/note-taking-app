@@ -22,4 +22,12 @@
         grid-template-columns: repeat(1, auto);
     }
 }
-
+.display-container{
+    display: flex;
+    justify-content: center;
+}
+#display{
+    color: red;
+    font-size: 170%;
+    margin-bottom:2%;
+}

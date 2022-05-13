@@ -1,9 +1,15 @@
 // console.log("hey")
 showNotes();
 const btn = document.getElementById("btn");
+const display= document.getElementById("display");
 
-btn.addEventListener("click", () => {
+btn.addEventListener("click", () => { //button to add note
     const addText = document.getElementById("addText");
+    if(addText.value==""){
+        display.innerHTML= `Note cannot be empty! Enter a non empty Note.`
+        return;
+    }
+    display.innerHTML= ""
     let notes = localStorage.getItem("notes");
     if (notes == null) {
         notesarr = [];
@@ -14,7 +20,6 @@ btn.addEventListener("click", () => {
     notesarr.push(addText.value);
     localStorage.setItem("notes", JSON.stringify(notesarr));
     addText.value = ''
-    console.log(notesarr);
     showNotes();
 });
 
@@ -57,13 +62,11 @@ deleteNote= (index)=>{
     notesarr.splice(index,1);
     localStorage.setItem("notes", JSON.stringify(notesarr));
     showNotes();
-    console.log(index)
 }
 
 let search= document.getElementById("search");
 search.addEventListener('input',()=>{
     let inputVal= search.value.toLowerCase();
-    console.log(search.value)
     const arr= Array.from(document.getElementsByClassName("notecard"));
     arr.forEach((element)=>{
         let cardText= element.getElementsByTagName("p")[0].innerText;
@@ -80,7 +83,6 @@ search.addEventListener('input',()=>{
 let searchbtn= document.getElementById("searchbtn");
 searchbtn.addEventListener("click", ()=>{
     let search= document.getElementById("search");
-    console.log(search.value)
     let inputVal= search.value.toLowerCase();
     const arr= Array.from(document.getElementsByClassName("notecard"));
     arr.forEach((element)=>{
