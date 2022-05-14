@@ -5,7 +5,9 @@ const display= document.getElementById("display");
 
 btn.addEventListener("click", () => { //button to add note
     const addText = document.getElementById("addText");
-    if(addText.value==""){
+    const title = document.getElementById("title");
+    const url = document.getElementById("url");
+    if(title.value==""){
         display.innerHTML= `Note cannot be empty! Enter a non empty Note.`
         return;
     }
@@ -17,9 +19,21 @@ btn.addEventListener("click", () => { //button to add note
     else {
         notesarr = JSON.parse(notes);
     }
-    notesarr.push(addText.value);
+    const obj={
+        title: "default",
+        content: "dafault",
+        link:"default"
+    } 
+    obj.title= title.value;
+    obj.content= addText.value;
+    obj.url= url.value;
+    // notesarr.push(addText.value);
+    notesarr.push(obj);
+    
     localStorage.setItem("notes", JSON.stringify(notesarr));
     addText.value = ''
+    title.value=''
+    url.value=''
     showNotes();
 });
 
@@ -35,8 +49,9 @@ function showNotes(){
         html+=`
             <div class="notecard">
                 <div class="card-body">
-                <h5 class="card-title">Note ${index+1}</h5>
-                <p class="card-text">${element}</p>
+                <h5 class="card-title">${element["title"]}</h5>
+                <a class="card-text my-3" href=${element["url"]}>${element["url"]}</a>
+                <p class="card-text my-3">${element["content"]}</p>
                 <button id=${index} onclick="deleteNote(this.id)" class="btn btn-primary">Delete</button>
                 </div>
             </div>
@@ -69,9 +84,11 @@ search.addEventListener('input',()=>{
     let inputVal= search.value.toLowerCase();
     const arr= Array.from(document.getElementsByClassName("notecard"));
     arr.forEach((element)=>{
+        let titleText= element.getElementsByTagName("h5")[0].innerText;
+        let titleTextLower= titleText.toLowerCase();
         let cardText= element.getElementsByTagName("p")[0].innerText;
         let cardTextLower= cardText.toLowerCase();
-        if(cardTextLower.includes(inputVal)){
+        if(cardTextLower.includes(inputVal) || titleTextLower.includes(inputVal)){
             element.style.display="block";
         }
         else

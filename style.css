@@ -1,25 +1,27 @@
 #mynotes{
     display: grid;
-    grid-template-columns: repeat(4, auto);
+    grid-template-columns: repeat(4, 25%);
     /* background-color: antiquewhite; */
     column-gap: 0.7%;
     row-gap: 3%;
     grid-auto-columns: 3;
     /* margin: 3% 0 3% 0; */
+    /* overflow: overflow-wrap; */
+    overflow-wrap: break-word;
 }
 @media only screen and (max-width: 900px) {
     #mynotes{
-        grid-template-columns: repeat(2, auto);
+        grid-template-columns: repeat(2, 50%);
     }
 }
 @media only screen and (max-width: 800px) {
     #mynotes{
-        grid-template-columns: repeat(2, auto);
+        grid-template-columns: repeat(2, 50%);
     }
 }
 @media only screen and (max-width: 600px) {
     #mynotes{
-        grid-template-columns: repeat(1, auto);
+        grid-template-columns: repeat(1, 100%);
     }
 }
 .display-container{
@@ -30,4 +32,10 @@
     color: red;
     font-size: 170%;
     margin-bottom:2%;
+}
+#title{
+    width:35%;
+}
+#url{
+    width: 45%;
 }
