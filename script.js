@@ -8,7 +8,7 @@ btn.addEventListener("click", () => { //button to add note
     const title = document.getElementById("title");
     const url = document.getElementById("url");
     if(title.value==""){
-        display.innerHTML= `Note cannot be empty! Enter a non empty Note.`
+        display.innerHTML= `Title cannot be empty! Enter a valid title.`
         return;
     }
     display.innerHTML= ""
